@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Aspects.h>
+#import "Aspects.h"
 
 @interface YLHookEvent : NSObject
 @property (nonatomic, assign, readonly) AspectOptions option;
