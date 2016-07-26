@@ -6,17 +6,23 @@
 //  Copyright © 2016年 Yunpeng. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "FirstViewController.h"
+#import "NSObject+YLHook.h"
 
-@interface ViewController ()
+@interface FirstViewController ()
 
 @end
 
-@implementation ViewController
-
+@implementation FirstViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self yl_makeEvents:^(YLEventMaker *make) {
+        make.after.selector(@"viewDidAppear:").block(^(id<AspectInfo> aspectInfo){
+             NSLog(@"[%@]after viewDidAppear",[[aspectInfo instance] class]);
+        });
+    }];    
 }
 
 - (void)didReceiveMemoryWarning {

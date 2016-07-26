@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "YLHook.h"
+#import "NSObject+YLHook.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[YLHook hookClassByName:@"UIViewController"] makeEvents:^(YLEventMaker *make) {
+        make.after.selector(@"viewDidLoad").block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
+        });
+        make.before.selector(@"viewWillAppear:").block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]before viewWillAppear",[[aspectInfo instance] class]);
+        });
+        make.before.selector(@"viewDidAppear:").block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
+        });
+    }];
+    
+    [UIViewController class] 
+    
+    
+    [[UIViewController class] yl_makeEvents:^(YLEventMaker *make) {
+        make.after.selector(@"viewWillAppear:").block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]after viewWillAppear",[[aspectInfo instance] class]);
+        });
+    }];
+    
+    
+//    [self yl_]
+    
+    
     return YES;
 }
 
