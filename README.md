@@ -58,6 +58,10 @@ This style is like [Masonry](https://github.com/SnapKit/Masonry). In fact, I did
 
 ## Installation
 
+This library relies on [Aspects](https://github.com/steipete/Aspects).
+
+After install Aspects, just drag the two files `YLHook.h/m` to your project. 
+
 You can install by [Cocopods](https://github.com/CocoaPods/CocoaPods) soon.
 
 
