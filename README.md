@@ -36,7 +36,7 @@ It will be like this:
 
 
 
-Now, you can hook by this way:
+Now, you can hook methods by this way:
 
 ```objc
 [[YLHook hookClass:[UIViewController class]] makeEvents:^(YLEventMaker *make) {
@@ -49,7 +49,7 @@ Now, you can hook by this way:
         make.before.selector(@"viewDidAppear:").block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
         });
-    }];
+  }];
 ```
 
 This style is like [Masonry](https://github.com/SnapKit/Masonry). In fact, I did refer to Masonry's realization. 
