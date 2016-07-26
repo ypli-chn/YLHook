@@ -7,8 +7,7 @@
 //
 
 #import "FirstViewController.h"
-#import "NSObject+YLHook.h"
-
+#import "YLHook.h"
 @interface FirstViewController ()
 
 @end
@@ -18,7 +17,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self yl_makeEvents:^(YLEventMaker *make) {
+    [self yl_makeEvents:^(YLHookEventMaker *make) {
         make.after.selector(@"viewDidAppear:").block(^(id<AspectInfo> aspectInfo){
              NSLog(@"[%@]after viewDidAppear",[[aspectInfo instance] class]);
         });

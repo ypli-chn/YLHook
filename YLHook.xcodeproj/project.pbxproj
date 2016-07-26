@@ -16,9 +16,6 @@
 		F2BD63FE1D475FF200A72873 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2BD63FC1D475FF200A72873 /* LaunchScreen.storyboard */; };
 		F2BD64091D475FF200A72873 /* YLHookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD64081D475FF200A72873 /* YLHookTests.m */; };
 		F2BD64171D47603B00A72873 /* YLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD64161D47603B00A72873 /* YLHook.m */; };
-		F2BD641A1D47614B00A72873 /* YLEventMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD64191D47614B00A72873 /* YLEventMaker.m */; };
-		F2BD641D1D47618100A72873 /* YLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD641C1D47618100A72873 /* YLEvent.m */; };
-		F2BD64211D47652300A72873 /* NSObject+YLHook.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD64201D47652300A72873 /* NSObject+YLHook.m */; };
 		F2BD64241D47809300A72873 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD64231D47809300A72873 /* SecondViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -50,12 +47,6 @@
 		F2BD640A1D475FF200A72873 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2BD64151D47603B00A72873 /* YLHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLHook.h; path = YLHook/YLHook.h; sourceTree = "<group>"; };
 		F2BD64161D47603B00A72873 /* YLHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLHook.m; path = YLHook/YLHook.m; sourceTree = "<group>"; };
-		F2BD64181D47614B00A72873 /* YLEventMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLEventMaker.h; path = YLHook/YLEventMaker.h; sourceTree = "<group>"; };
-		F2BD64191D47614B00A72873 /* YLEventMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLEventMaker.m; path = YLHook/YLEventMaker.m; sourceTree = "<group>"; };
-		F2BD641B1D47618100A72873 /* YLEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLEvent.h; path = YLHook/YLEvent.h; sourceTree = "<group>"; };
-		F2BD641C1D47618100A72873 /* YLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLEvent.m; path = YLHook/YLEvent.m; sourceTree = "<group>"; };
-		F2BD641F1D47652300A72873 /* NSObject+YLHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+YLHook.h"; path = "YLHook/NSObject+YLHook.h"; sourceTree = "<group>"; };
-		F2BD64201D47652300A72873 /* NSObject+YLHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+YLHook.m"; path = "YLHook/NSObject+YLHook.m"; sourceTree = "<group>"; };
 		F2BD64221D47809300A72873 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		F2BD64231D47809300A72873 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		F66F05D3822DFD94A3BD8D06 /* Pods-YLHook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLHook.release.xcconfig"; path = "Pods/Target Support Files/Pods-YLHook/Pods-YLHook.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,24 +146,10 @@
 		F2BD64141D47602500A72873 /* YLHook */ = {
 			isa = PBXGroup;
 			children = (
-				F2BD641E1D4764FD00A72873 /* Category */,
 				F2BD64151D47603B00A72873 /* YLHook.h */,
 				F2BD64161D47603B00A72873 /* YLHook.m */,
-				F2BD64181D47614B00A72873 /* YLEventMaker.h */,
-				F2BD64191D47614B00A72873 /* YLEventMaker.m */,
-				F2BD641B1D47618100A72873 /* YLEvent.h */,
-				F2BD641C1D47618100A72873 /* YLEvent.m */,
 			);
 			name = YLHook;
-			sourceTree = "<group>";
-		};
-		F2BD641E1D4764FD00A72873 /* Category */ = {
-			isa = PBXGroup;
-			children = (
-				F2BD641F1D47652300A72873 /* NSObject+YLHook.h */,
-				F2BD64201D47652300A72873 /* NSObject+YLHook.m */,
-			);
-			name = Category;
 			sourceTree = "<group>";
 		};
 		FF5645FC2AE2D85874D9C075 /* Pods */ = {
@@ -337,12 +314,9 @@
 			files = (
 				F2BD63F61D475FF200A72873 /* FirstViewController.m in Sources */,
 				F2BD64171D47603B00A72873 /* YLHook.m in Sources */,
-				F2BD64211D47652300A72873 /* NSObject+YLHook.m in Sources */,
 				F2BD63F31D475FF200A72873 /* AppDelegate.m in Sources */,
 				F2BD64241D47809300A72873 /* SecondViewController.m in Sources */,
-				F2BD641A1D47614B00A72873 /* YLEventMaker.m in Sources */,
 				F2BD63F01D475FF200A72873 /* main.m in Sources */,
-				F2BD641D1D47618100A72873 /* YLEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
