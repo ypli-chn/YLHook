@@ -18,7 +18,7 @@ Aspects Demo:
 
 It's really very simple. But it's not clean when we need hook a lot of methods at one class.
 
-It will be like this:
+It will be like this:
 
 ```objc
 [UIViewController aspect_hookSelector:@selector(viewWillAppear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
@@ -39,7 +39,7 @@ It's really very simple. But it's not clean when we need hook a lot of methods a
 Now, you can hook by this way:
 
 ```objc
-[[YLHook hookClassByName:@"UIViewController"] makeEvents:^(YLEventMaker *make) {
+[[YLHook hookClass:[UIViewController class]] makeEvents:^(YLEventMaker *make) {
         make.after.selector(@"viewDidLoad").block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
         });
