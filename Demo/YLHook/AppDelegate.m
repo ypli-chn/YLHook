@@ -30,17 +30,12 @@
         });
     }];
     
-    
     [[UIViewController class] yl_makeEvents:^(YLHookEventMaker *make) {
         make.after.selector(@"viewWillAppear:").execute.block(^(id<AspectInfo> aspectInfo){
         //execute is an optional semantic filler
             NSLog(@"[%@]after viewWillAppear",[[aspectInfo instance] class]);
         });
     }];
-    
-    
-//    [self yl_]
-    
     
     return YES;
 }
