@@ -17,6 +17,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
     [self yl_makeEvents:^(YLHookEventMaker *make) {
         make.after.selector(@"viewDidAppear:").block(^(id<AspectInfo> aspectInfo){
              NSLog(@"[%@]after viewDidAppear",[[aspectInfo instance] class]);
