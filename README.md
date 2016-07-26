@@ -71,9 +71,11 @@ The  `excute` of `YLHookEvent` is an optional semantic filler just like `with` i
 
 ## Installation
 
-This library relies on [Aspects](https://github.com/steipete/Aspects).
+If you use Cocoapods, add `pod 'YLHook', '~> 1.0.0'` to  your Podfile.
 
-After install Aspects, just drag the two files `YLHook.h/m` to your project. 
+If not,  drag the two files `YLHook.h/m` into your project. This library relies on [Aspects](https://github.com/steipete/Aspects). And you also need drag `Aspects.h/m` into your project.
+
+
 
 ## License
 
