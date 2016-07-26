@@ -6,7 +6,7 @@ YLHook enables [Aspects](https://github.com/steipete/Aspects) to support functio
 
 ## Why to use YLHook
 
-We often print logs or statistics everywhere. AOP provides a concise way to solve those [Cross-cutting Concerns](https://en.wikipedia.org/wiki/Cross-cutting_concern).
+We often write a lot of code to print logs or carry out statistical information everywhere. AOP provides a concise way to solve those [Cross-cutting Concerns](https://en.wikipedia.org/wiki/Cross-cutting_concern).
 
 Aspects Demo:
 
@@ -53,6 +53,19 @@ Now, you can hook methods by this way:
 ```
 
 This style is like [Masonry](https://github.com/SnapKit/Masonry). In fact, I did refer to Masonry's realization. 
+
+
+
+## Usage
+
+You can easy to get an instance of YLHook by static method below:
+```objc
++ (YLHook *)hookClass:(Class)cls;
++ (YLHook *)hookClassByName:(NSString *)name;
++ (YLHook *)hookInstance:(id)instance;
+```
+
+The  `excute` of `YLHookEvent` is an optional semantic filler just like `with` in Masonry.
 
 
 
