@@ -39,7 +39,7 @@ It will be like this:
 Now, you can hook methods by this way:
 
 ```objc
-[[YLHook hookClass:[UIViewController class]] makeEvents:^(YLEventMaker *make) {
+[[YLHook hookClass:[UIViewController class]] makeEvents:^(YLHookEventMaker *make) {
         make.after.selector(@"viewDidLoad").block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
         });
