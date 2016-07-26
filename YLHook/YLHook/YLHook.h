@@ -34,7 +34,6 @@
 @end
 
 
-
 @interface YLHook : NSObject
 + (YLHook *)hookClass:(Class)cls;
 + (YLHook *)hookClassByName:(NSString *)name;
