@@ -7,6 +7,7 @@ s.homepage = 'https://github.com/ypli-chn/YLHook'
 s.authors = { "Yunpeng Li" => "ypli.chn@outlook.com" }
 s.source = { :git => 'https://github.com/ypli-chn/YLHook.git', :tag => s.version.to_s }
 s.requires_arc = true
+s.platform     = :ios, '7.0'
 s.ios.deployment_target = '7.0'
 s.source_files = '*.{h,m}'
 s.dependency 'Aspects', '~> 1.4.1'

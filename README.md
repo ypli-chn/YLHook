@@ -75,10 +75,6 @@ This library relies on [Aspects](https://github.com/steipete/Aspects).
 
 After install Aspects, just drag the two files `YLHook.h/m` to your project. 
 
-You can install by [Cocopods](https://github.com/CocoaPods/CocoaPods) soon.
-
-
-
 ## License
 
 YLHook is released under the MIT license. See [LICENSE](./LICENSE) for details.
