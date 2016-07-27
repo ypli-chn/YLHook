@@ -9,12 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "Aspects.h"
 
+#define YL_HELPER_0(x) #x
+#define YL_HELPER_1(x) YL_HELPER_0(clang diagnostic ignored #x)
+#define YL_CLANG_WARNING(x) _Pragma(YL_HELPER_1(x))
+
+#define sel(SELECTOR)  selector(\
+_Pragma("clang diagnostic push")    \
+YL_CLANG_WARNING(-Wundeclared-selector) \
+@selector(SELECTOR) \
+_Pragma("clang diagnostic pop")\
+)
+
+
 @interface YLHookEvent : NSObject
 @property (nonatomic, assign, readonly) AspectOptions option;
 @property (nonatomic, copy, readonly) id handlerBlock;
 @property (nonatomic, readonly) SEL hookSelector;
 
-- (YLHookEvent *(^)(NSString *selectorName))selector;
+- (YLHookEvent *(^)(SEL selector))selector;
 - (YLHookEvent *(^)(id blk))block;
 - (YLHookEvent *)after;
 - (YLHookEvent *)instead;
@@ -25,7 +37,6 @@
 
 
 @interface YLHookEventMaker : NSObject
-- (YLHookEvent *(^)(NSString *selectorName))selector;
 - (YLHookEvent *)after;
 - (YLHookEvent *)instead;
 - (YLHookEvent *)before;
@@ -42,7 +53,6 @@
 - (void)makeEvents:(void (^)(YLHookEventMaker *make))block;
 - (void)makeEvents:(void (^)(YLHookEventMaker *make))block catch:(void (^)(NSError *error))errorBlock;
 @end
-
 
 
 @interface NSObject (YLHook)

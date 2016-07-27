@@ -39,14 +39,14 @@ It will be like this:
 Now, you can hook methods by this way:
 
 ```objc
-[[YLHook hookClass:[UIViewController class]] makeEvents:^(YLHookEventMaker *make) {
-        make.after.selector(@"viewDidLoad").block(^(id<AspectInfo> aspectInfo){
+[[UIViewController class] yl_makeEvents:^(YLHookEventMaker *make) {
+        make.after.sel(viewDidLoad).block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
         });
-        make.before.selector(@"viewWillAppear:").block(^(id<AspectInfo> aspectInfo){
+        make.before.sel(viewWillAppear:).block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]before viewWillAppear",[[aspectInfo instance] class]);
         });
-        make.before.selector(@"viewDidAppear:").block(^(id<AspectInfo> aspectInfo){
+        make.before.sel(viewDidAppear:).block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
         });
   }];
@@ -65,13 +65,32 @@ You can easy to get an instance of YLHook by static method below:
 + (YLHook *)hookInstance:(id)instance;
 ```
 
+
+
+```objc
+[[YLHook hookClassByName:@"UIViewController"] makeEvents:^(YLHookEventMaker *make) {
+	make.before.sel(viewDidAppear:).block(^(id<AspectInfo> aspectInfo){
+    	NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
+    });
+}];
+
+\\ or
+ 
+[[UIViewController class] yl_makeEvents:^(YLHookEventMaker *make) {
+	make.before.sel(viewDidAppear:).block(^(id<AspectInfo> aspectInfo){
+    	NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
+    });
+}];
+
+```
+
+
+
 The  `excute` of `YLHookEvent` is an optional semantic filler just like `with` in Masonry.
-
-
 
 ## Installation
 
-If you use Cocoapods, add `pod 'YLHook', '~> 1.0.0'` to  your Podfile.
+If you use Cocoapods, add `pod 'YLHook', '~> 1.0.1'` to  your Podfile.
 
 If not,  drag the two files `YLHook.h/m` into your project. This library relies on [Aspects](https://github.com/steipete/Aspects). And you also need drag `Aspects.h/m` into your project.
 
@@ -88,3 +107,18 @@ If not,  drag the two files `YLHook.h/m` into your project. This library relies 
 ## License
 
 YLHook is released under the MIT license. See [LICENSE](./LICENSE) for details.
+
+
+
+## Release Notes
+
+#### Version 1.0.1
+
+- Use `sel` instead of `selector`. 
+
+
+- Don't need to wirte `@""`.
+
+#### Version 1.0.0
+
+- init

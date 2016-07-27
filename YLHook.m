@@ -39,9 +39,9 @@
     return self;
 }
 
-- (YLHookEvent *(^)(NSString *))selector {
-    return ^id(NSString * selectorName) {
-        self.hookSelector = NSSelectorFromString(selectorName);
+- (YLHookEvent *(^)(SEL selector))selector {
+    return ^id(SEL selector) {
+        self.hookSelector = selector;
         return self;
     };
 }
@@ -85,12 +85,6 @@
     YLHookEvent *event = [[YLHookEvent alloc] init];
     [self.madeEvents addObject:event];
     return event;
-}
-
-- (YLHookEvent *(^)(NSString *selectorName))selector {
-    return ^id(NSString *selectorName) {
-        return YLHookEvent.new.selector(selectorName);
-    };
 }
 
 - (NSMutableSet<YLHookEvent *> *)madeEvents {
