@@ -96,8 +96,6 @@ If not,  drag the two files `YLHook.h/m` into your project. This library relies 
 
 
 
-
-
 ## 中文介绍
 
 [链接](http://blog.ypli.xyz/ios/blockzai-han-shu-shi-lian-shi-bian-cheng-zhong-de-ying-yong-you-hua-aopfang-an)
@@ -114,10 +112,7 @@ YLHook is released under the MIT license. See [LICENSE](./LICENSE) for details.
 
 #### Version 1.0.1
 
-- Use `sel` instead of `selector`. 
-
-
-- Don't need to wirte `@""`.
+- Use `sel` instead of `selector`. And don't need to wirte `@""` any more.
 
 #### Version 1.0.0
 
