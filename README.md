@@ -39,7 +39,7 @@ It will be like this:
 Now, you can hook methods by this way:
 
 ```objc
-[[UIViewController class] yl_makeEvents:^(YLHookEventMaker *make) {
+[UIViewController yl_makeEvents:^(YLHookEventMaker *make) {
         make.after.sel(viewDidLoad).block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
         });
@@ -76,7 +76,7 @@ You can easy to get an instance of YLHook by static method below:
 
 \\ or
  
-[[UIViewController class] yl_makeEvents:^(YLHookEventMaker *make) {
+[UIViewController yl_makeEvents:^(YLHookEventMaker *make) {
 	make.before.sel(viewDidAppear:).block(^(id<AspectInfo> aspectInfo){
     	NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
     });
