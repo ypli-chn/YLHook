@@ -9,6 +9,7 @@
 #import "FirstViewController.h"
 #import "YLHook.h"
 @interface FirstViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *myButton;
 
 @end
 
@@ -21,7 +22,10 @@
         make.after.sel(viewDidAppear:).block(^(id<AspectInfo> aspectInfo){
              NSLog(@"[%@]after viewDidAppear",[[aspectInfo instance] class]);
         });
-    }];    
+    }];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

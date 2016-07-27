@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "YLHook.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-
+    
     [[YLHook hookClassByName:@"UIViewController"] makeEvents:^(YLHookEventMaker *make) {
         make.after.sel(viewDidLoad).block(^(id<AspectInfo> aspectInfo){
             NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
@@ -31,11 +32,23 @@
     }];
     
     
-    [[UIViewController class] yl_makeEvents:^(YLHookEventMaker *make) {
+    [UIViewController yl_makeEvents:^(YLHookEventMaker *make) {
         make.after.sel(viewWillAppear:).execute.block(^(id<AspectInfo> aspectInfo){
         //execute is an optional semantic filler
             NSLog(@"[%@]after viewWillAppear",[[aspectInfo instance] class]);
         });
+    }];
+    
+    
+    // Handle error
+    [[YLHook hookClassByName:@"FirstViewController"] makeEvents:^(YLHookEventMaker *make) {
+        make.after.sel(viewDidLoad).block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
+        });
+    } catch:^(NSError *error) {
+        // Aspects don't allow a method be hooked more than once within the subclass hierarchy
+        // So there's an error
+        NSLog(@"%@",error);
     }];
     
     

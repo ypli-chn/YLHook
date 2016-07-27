@@ -52,6 +52,7 @@
         return self;
     };
 }
+
 - (YLHookEvent *)execute {
     return self;
 }
@@ -86,6 +87,7 @@
     [self.madeEvents addObject:event];
     return event;
 }
+
 
 - (NSMutableSet<YLHookEvent *> *)madeEvents {
     if (_madeEvents == nil) {
@@ -139,32 +141,33 @@
 
 - (void)makeEvents:(void (^)(YLHookEventMaker *make))block catch:(void (^)(NSError *error))errorBlock {
     block(self.make);
+    
     NSError *error = [self execute];
     if(errorBlock) {
         errorBlock(error);
     }
 }
 
+
 #pragma mark hook
 - (NSError *)execute {
-    __weak YLHook *weakSelf = self;
     __block NSError *error = nil;
     if (self.instance == nil) {
         [self.make.events enumerateObjectsUsingBlock:^(YLHookEvent * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
-            [weakSelf.cls aspect_hookSelector:event.hookSelector
-                                  withOptions:event.option
-                                   usingBlock:event.handlerBlock
-                                        error:&error];
+            [self.cls aspect_hookSelector:event.hookSelector
+                              withOptions:event.option
+                               usingBlock:event.handlerBlock
+                                    error:&error];
             if (error) {
                 *stop = YES;
             }
         }];
     } else {
         [self.make.events enumerateObjectsUsingBlock:^(YLHookEvent * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
-            [weakSelf.instance aspect_hookSelector:event.hookSelector
-                                  withOptions:event.option
-                                   usingBlock:event.handlerBlock
-                                        error:&error];
+            [self.instance aspect_hookSelector:event.hookSelector
+                                   withOptions:event.option
+                                    usingBlock:event.handlerBlock
+                                         error:&error];
             if (error) {
                 *stop = YES;
             }

@@ -11,7 +11,7 @@ We often write a lot of code to print logs or carry out statistical information 
 Aspects Demo:
 
 ```objc
-[UIViewController aspect_hookSelector:@selector(viewWillAppear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
+[UIViewController aspect_hookSelector:@selector(viewWillAppear:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
     NSLog(@"[%@]before viewWillAppear",[[aspectInfo instance] class]);
 } error:NULL];
 ```
@@ -21,15 +21,15 @@ It's really very simple. But it's not clean when we need hook a lot of methods a
 It will be like this:
 
 ```objc
-[UIViewController aspect_hookSelector:@selector(viewWillAppear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
+[UIViewController aspect_hookSelector:@selector(viewWillAppear:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
     NSLog(@"[%@]before viewWillAppear",[[aspectInfo instance] class]);
 } error:NULL];
 
-[UIViewController aspect_hookSelector:@selector(viewDidLoad:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
+[UIViewController aspect_hookSelector:@selector(viewDidLoad:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
     NSLog(@"[%@]before viewDidLoad",[[aspectInfo instance] class]);
 } error:NULL];
 
-[UIViewController aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
+[UIViewController aspect_hookSelector:@selector(viewDidAppear:) withOptions:AspectPositionBefore usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated) {
     NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
 } error:NULL];
 ```
@@ -81,7 +81,6 @@ You can easy to get an instance of YLHook by static method below:
     	NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
     });
 }];
-
 ```
 
 

@@ -20,7 +20,6 @@ YL_CLANG_WARNING(-Wundeclared-selector) \
 _Pragma("clang diagnostic pop")\
 )
 
-
 @interface YLHookEvent : NSObject
 @property (nonatomic, assign, readonly) AspectOptions option;
 @property (nonatomic, copy, readonly) id handlerBlock;
@@ -48,8 +47,8 @@ _Pragma("clang diagnostic pop")\
 @interface YLHook : NSObject
 + (YLHook *)hookClass:(Class)cls;
 + (YLHook *)hookClassByName:(NSString *)name;
-
 + (YLHook *)hookInstance:(id)instance;
+
 - (void)makeEvents:(void (^)(YLHookEventMaker *make))block;
 - (void)makeEvents:(void (^)(YLHookEventMaker *make))block catch:(void (^)(NSError *error))errorBlock;
 @end

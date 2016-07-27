@@ -32,6 +32,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="C2k-2t-FOF"/>
+                    <connections>
+                        <outlet property="myButton" destination="0R3-BW-vZY" id="fUP-ke-MBd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
