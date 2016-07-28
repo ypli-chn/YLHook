@@ -109,6 +109,9 @@ YLHook is released under the MIT license. See [LICENSE](./LICENSE) for details.
 
 ## Release Notes
 
+#### Version 1.0.2
+- fix bug of `catch`
+
 #### Version 1.0.1
 
 - Use `sel` instead of `selector`. And don't need to wirte `@""` any more.

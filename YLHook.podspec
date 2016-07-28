@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'YLHook'
-s.version = '1.0.1'
+s.version = '1.0.2'
 s.license      = { :type => 'MIT', :file => 'LICENSE' }
 s.summary = 'A delightful library inspired by Functional Programming for AOP based on Aspects.'
 s.homepage = 'https://github.com/ypli-chn/YLHook'
