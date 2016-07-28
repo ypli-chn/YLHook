@@ -19,17 +19,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-//    [[YLHook hookClassByName:@"UIViewController"] makeEvents:^(YLHookEventMaker *make) {
-//        make.after.sel(viewDidLoad).block(^(id<AspectInfo> aspectInfo){
-//            NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
-//        });
-//        make.before.sel(viewWillAppear:).block(^(id<AspectInfo> aspectInfo){
-//            NSLog(@"[%@]before viewWillAppear",[[aspectInfo instance] class]);
-//        });
-//        make.before.sel(viewDidAppear:).block(^(id<AspectInfo> aspectInfo){
-//            NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
-//        });
-//    }];
+    [[YLHook hookClassByName:@"UIViewController"] makeEvents:^(YLHookEventMaker *make) {
+        make.after.sel(viewDidLoad).block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]after viewDidLoad",[[aspectInfo instance] class]);
+        });
+        make.before.sel(viewWillAppear:).block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]before viewWillAppear",[[aspectInfo instance] class]);
+        });
+        make.before.sel(viewDidAppear:).block(^(id<AspectInfo> aspectInfo){
+            NSLog(@"[%@]before viewDidAppear",[[aspectInfo instance] class]);
+        });
+    }];
     
     
     [UIViewController yl_makeEvents:^(YLHookEventMaker *make) {
