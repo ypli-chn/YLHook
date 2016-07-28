@@ -110,27 +110,28 @@
 @interface YLHook()
 
 @property (nonatomic, strong) YLHookEventMaker *make;
-@property (nonatomic, strong) Class cls;
+@property (nonatomic, strong) id hook;
 @property (nonatomic, strong) id instance;
 @end
 @implementation YLHook
 #pragma mark Public API
 + (YLHook *)hookClass:(Class)cls {
-    YLHook *hook = [[YLHook alloc]init];
-    hook.cls = cls;
-    hook.make = [[YLHookEventMaker alloc] init];
-    return hook;
+    return [self hook:cls];
 }
 
 + (YLHook *)hookClassByName:(NSString *)name {
     Class cls = NSClassFromString(name);
-    return [self hookClass:cls];
+    return [self hook:cls];
 }
 
-
 + (YLHook *)hookInstance:(id)instance {
+    return [self hook:instance];
+}
+
+// obj could be a Class or Instance
++ (YLHook *)hook:(id)obj {
     YLHook *hook = [[YLHook alloc]init];
-    hook.instance = instance;
+    hook.hook = obj;
     hook.make = [[YLHookEventMaker alloc] init];
     return hook;
 }
@@ -143,7 +144,7 @@
     block(self.make);
     
     NSError *error = [self execute];
-    if(errorBlock) {
+    if(errorBlock && error) {
         errorBlock(error);
     }
 }
@@ -152,27 +153,16 @@
 #pragma mark hook
 - (NSError *)execute {
     __block NSError *error = nil;
-    if (self.instance == nil) {
-        [self.make.events enumerateObjectsUsingBlock:^(YLHookEvent * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self.cls aspect_hookSelector:event.hookSelector
-                              withOptions:event.option
-                               usingBlock:event.handlerBlock
-                                    error:&error];
-            if (error) {
-                *stop = YES;
-            }
-        }];
-    } else {
-        [self.make.events enumerateObjectsUsingBlock:^(YLHookEvent * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self.instance aspect_hookSelector:event.hookSelector
-                                   withOptions:event.option
-                                    usingBlock:event.handlerBlock
-                                         error:&error];
-            if (error) {
-                *stop = YES;
-            }
-        }];
-    }
+    // `hook` allow to be a Class or Object
+    [self.make.events enumerateObjectsUsingBlock:^(YLHookEvent * _Nonnull event, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.hook aspect_hookSelector:event.hookSelector
+                           withOptions:event.option
+                            usingBlock:event.handlerBlock
+                                 error:&error];
+        if (error) {
+            *stop = YES;
+        }
+    }];
     return error;
 }
 
@@ -194,10 +184,10 @@
 }
 
 + (void)yl_makeEvents:(void (^)(YLHookEventMaker *make))block {
-    [[YLHook hookInstance:[self class]] makeEvents:block];
+    [[YLHook hookClass:[self class]] makeEvents:block];
 }
 
 + (void)yl_makeEvents:(void (^)(YLHookEventMaker *make))block catch:(void (^)(NSError *error))errorBlock {
-    [[YLHook hookInstance:[self class]] makeEvents:block catch:errorBlock];
+    [[YLHook hookClass:[self class]] makeEvents:block catch:errorBlock];
 }
 @end
